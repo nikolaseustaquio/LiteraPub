@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Meus Favoritos - LiteraPub</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="CSS/catalogo.css">
+    <link rel="stylesheet" href="CSS/favoritos.css">
+    <link rel="stylesheet" href="CSS/acessibilidade.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="barra-acessibilidade">
+        <button id="btnAumentar" title="Aumentar fonte"><i class="bi bi-zoom-in"></i></button>
+        <button id="btnDiminuir" title="Diminuir fonte"><i class="bi bi-zoom-out"></i></button>
+        <button id="btnLer" title="Ler página"><i class="bi bi-earbuds"></i></button>
+    </div>
+
+    <div class="pagina">
+
+        <aside class="sidebar">
+
+            <div class="logo-sidebar">
+                <i class="bi bi-book"></i>
+                <h1 class="logo-nome">LiteraPub</h1>
+                <p class="logo-frase">Busque seus melhores livros aqui!</p>
+            </div>
+
+            <div class="menu-box">
+                <a href="catalogo.html" class="botao-voltar">
+                    <i class="bi bi-arrow-left"></i> Voltar ao Catálogo
+                </a>
+            </div>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <div class="busca-box">
+                <i class="bi bi-heart-fill"></i>
+                <h2 style="margin: 0; flex: 1; padding-left: 10px;">Meus Favoritos</h2>
+            </div>
+
+            <div id="containerFavoritos" class="grade-livros">
+
+            </div>
+
+            <div id="mensagemVazio" style="text-align: center; padding: 40px; display: none;">
+                <i class="bi bi-heart" style="font-size: 48px; color: #ccc; display: block; margin-bottom: 20px;"></i>
+                <h3 style="color: #999;">Nenhum livro favoritado ainda</h3>
+                <p style="color: #bbb;">Explore nosso catálogo e adicione livros aos seus favoritos!</p>
+                <a href="catalogo.html" class="botao-ver-mais" style="margin-top: 20px; display: inline-block;">Ir para Catálogo</a>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="JS/acessibilidade.js"></script>
+    <script src="JS/favoritos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const containerFavoritos = document.getElementById("containerFavoritos");
+            const mensagemVazio = document.getElementById("mensagemVazio");
+
+            const favoritos = gerenciador.obterFavoritos();
+
+            if (favoritos.length === 0) {
+                containerFavoritos.style.display = "none";
+                mensagemVazio.style.display = "block";
+            } else {
+                containerFavoritos.innerHTML = "";
+
+                favoritos.forEach(livro => {
+                    const card = document.createElement("div");
+                    card.classList.add("card-livro");
+                    card.setAttribute("data-id", livro.id);
+                    card.setAttribute("data-titulo", livro.titulo);
+                    card.setAttribute("data-autor", livro.autor);
+                    card.setAttribute("data-genero", livro.genero);
+
+                    card.innerHTML = `
+                        <div class="capa-livro">
+                            <i class="bi bi-image"></i>
+                        </div>
+                        <p class="titulo-livro">${livro.titulo}</p>
+                        <p class="autor-livro">${livro.autor}</p>
+                        <div class="acoes-card">
+                            <button class="botao-ver-mais">Ver mais</button>
+                            <button class="botao-favorito favoritado" title="Remover dos favoritos">
+                                <i class="bi bi-heart-fill"></i>
+                            </button>
+                        </div>
+                    `;
+
+                    const botaoFavorito = card.querySelector(".botao-favorito");
+                    botaoFavorito.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        gerenciador.removerFavorito(livro.id);
+                        card.remove();
+
+                        if (gerenciador.obterFavoritos().length === 0) {
+                            containerFavoritos.style.display = "none";
+                            mensagemVazio.style.display = "block";
+                        }
+
+                        alert(`"${livro.titulo}" removido dos favoritos!`);
+                    });
+
+                    const botaoVerMais = card.querySelector(".botao-ver-mais");
+                    botaoVerMais.addEventListener("click", function() {
+                        window.location.href = "livro.html";
+                    });
+
+                    containerFavoritos.appendChild(card);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

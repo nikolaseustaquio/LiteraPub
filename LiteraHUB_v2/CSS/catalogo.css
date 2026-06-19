@@ -1,0 +1,354 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1eee0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.barra-acessibilidade {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #705325;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    gap: 5px;
+    z-index: 999;
+}
+
+.barra-acessibilidade button {
+    background: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #705325;
+    font-size: 16px;
+}
+
+.pagina {
+    display: flex;
+    min-height: 100vh;
+    gap: 20px;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 260px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.logo-sidebar {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #705325;
+    border-radius: 10px;
+}
+
+.logo-sidebar i {
+    font-size: 40px;
+    color: #705325;
+}
+
+.logo-nome {
+    font-size: 22px;
+    color: #705325;
+    margin: 8px 0 4px 0;
+    font-weight: bold;
+}
+
+.logo-frase {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+    font-weight: bold;
+}
+
+.menu-box { display: flex; flex-direction: column; gap: 10px; }
+
+.botao-favoritos, .botao-autor, .botao-admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 2px solid #705325;
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.botao-favoritos, .botao-autor {
+    background-color: white;
+    color: #705325;
+}
+
+.botao-favoritos:hover, .botao-autor:hover {
+    background-color: #705325;
+    color: white;
+}
+
+.botao-admin {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.botao-admin:hover {
+    background-color: #c0392b;
+}
+
+.filtro-box {
+    background-color: white;
+    border: 2px solid #705325;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.filtro-box h3 {
+    margin: 0 0 14px 0;
+    font-size: 15px;
+    color: #705325;
+}
+
+.conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.busca-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 2px solid #705325;
+    border-radius: 10px;
+    padding: 10px 16px;
+}
+
+.busca-input {
+    border: none;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
+    background: transparent;
+    color: #333;
+}
+
+.grade-livros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card-livro {
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+.card-livro:hover { border-color: #705325; }
+
+.capa-livro {
+    width: 90px;
+    height: 110px;
+    background-color: #f1eee0;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #705325;
+    font-size: 24px;
+}
+
+.titulo-livro {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    color: #222;
+}
+
+.autor-livro {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+}
+
+.acoes-card {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.botao-ver-mais {
+    padding: 5px 16px;
+    background-color: white;
+    color: #705325;
+    border: 2px solid #705325;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+    flex: 1;
+}
+
+.botao-ver-mais:hover {
+    background-color: #705325;
+    color: white;
+}
+
+.botao-favorito {
+    background: none;
+    border: 2px solid #705325;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #705325;
+    transition: all 0.3s;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.botao-favorito:hover {
+    background-color: #705325;
+    color: white;
+}
+
+.botao-favorito.favoritado {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+    color: white;
+}
+
+.genero {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+}
+
+.genero input[type="checkbox"] { display: none; }
+
+.caixa {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #705325;
+    border-radius: 3px;
+    background-color: white;
+    flex-shrink: 0;
+    transition: background-color 0.2s;
+}
+
+.genero input[type="checkbox"]:checked + .caixa {
+    background-color: #705325;
+}
+
+.select-ordenar {
+    width: 100%;
+    padding: 8px 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+}
+
+.select-ordenar:focus {
+    outline: none;
+    border-color: #705325;
+}
+
+.filtro-titulo {
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+@media (max-width: 1024px) {
+    .pagina { gap: 15px; padding: 15px; }
+    .sidebar { width: 220px; }
+}
+
+@media (max-width: 768px) {
+    .pagina {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .logo-sidebar { flex: 1; min-width: 200px; }
+    .menu-box { flex: 1; min-width: 200px; flex-direction: row; }
+    .filtro-box { flex: 1; min-width: 200px; }
+
+    .grade-livros {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .card-livro { padding: 15px; }
+}
+
+@media (max-width: 480px) {
+    body { padding: 10px; }
+    .pagina { padding: 10px; gap: 10px; }
+
+    .sidebar {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-box { flex-direction: column; }
+    .filtro-box { padding: 15px; }
+
+    .grade-livros {
+        grid-template-columns: 1fr;
+    }
+
+    .logo-nome { font-size: 18px; }
+    .botao-favoritos, .botao-autor, .botao-admin {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .busca-input { font-size: 14px; }
+}

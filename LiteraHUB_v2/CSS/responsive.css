@@ -1,0 +1,140 @@
+@media (max-width: 1024px) {
+    .pagina { gap: 15px; padding: 15px; }
+    .sidebar { width: auto; }
+    .secao-stats { grid-template-columns: repeat(2, 1fr); }
+    .tabela-container { overflow-x: auto; }
+}
+
+@media (max-width: 768px) {
+    body { padding: 10px; font-size: 15px; }
+
+    .pagina {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .conteudo { flex: 1; }
+
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stat-card i {
+        font-size: 28px;
+    }
+
+    .grade-livros {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .card-livro {
+        padding: 15px;
+    }
+
+    .secao-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .topo-tabela {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tabela-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .pagina {
+        gap: 5px;
+        padding: 5px;
+    }
+
+    .barra-acessibilidade {
+        top: 5px;
+        right: 5px;
+    }
+
+    .barra-acessibilidade button {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+
+    .sidebar {
+        gap: 5px;
+    }
+
+    .logo-sidebar {
+        padding: 10px;
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .logo-nome {
+        font-size: 16px;
+    }
+
+    .grade-livros {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .card-livro {
+        padding: 10px;
+    }
+
+    .capa-livro {
+        width: 70px;
+        height: 90px;
+    }
+
+    .titulo-livro {
+        font-size: 12px;
+    }
+
+    .botao-ver-mais, .botao-favorito {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+
+    .busca-input {
+        font-size: 13px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px 5px !important;
+    }
+
+    .acoes-tabela {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .botao-acao {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+}

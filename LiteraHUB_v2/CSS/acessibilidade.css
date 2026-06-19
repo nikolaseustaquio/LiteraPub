@@ -1,0 +1,85 @@
+.barra-acessibilidade {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #705325;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    gap: 5px;
+    z-index: 999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.barra-acessibilidade button {
+    background: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #705325;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.barra-acessibilidade button:hover {
+    background: #f1eee0;
+    transform: scale(1.1);
+}
+
+.barra-acessibilidade button:active {
+    background: #e8e4d8;
+}
+
+#menuAcessibilidade {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    background: white;
+    border: 2px solid #705325;
+    border-radius: 8px;
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+    min-width: 200px;
+}
+
+#menuAcessibilidade.ativo {
+    display: block;
+}
+
+#menuAcessibilidade label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+#menuAcessibilidade input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+body.fonte-maior {
+    font-size: 18px;
+}
+
+body.fonte-maior-grande {
+    font-size: 20px;
+}
+
+body.fonte-maior-muito {
+    font-size: 22px;
+}
+
+body.fonte-menor {
+    font-size: 14px;
+}
+
+body.leitura-ativa .card,
+body.leitura-ativa h2,
+body.leitura-ativa p,
+body.leitura-ativa a {
+    background-color: #fffacd;
+    border: 2px solid #ffd700;
+}

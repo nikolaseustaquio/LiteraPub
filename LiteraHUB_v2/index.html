@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>LiteraPub</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/login.css">
+    <link rel="stylesheet" href="CSS/cadastro.css">
+    <link rel="stylesheet" href="CSS/acessibilidade.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="barra-acessibilidade">
+        <button id="btnAumentar" title="Aumentar fonte"><i class="bi bi-zoom-in"></i></button>
+        <button id="btnDiminuir" title="Diminuir fonte"><i class="bi bi-zoom-out"></i></button>
+        <button id="btnLer" title="Ler página"><i class="bi bi-earbuds"></i></button>
+        <button id="btnMenu" title="Menu"><i class="bi bi-list"></i></button>
+    </div>
+
+    <div class="container">
+
+        <header>
+            <div class="logo" onclick="voltarInicio()" style="cursor: pointer;">
+                <i class="bi bi-book"></i>
+                <span>LiteraPub</span>
+            </div>
+
+            <div class="busca">
+                <input type="text" placeholder="Buscar livros, autores...">
+            </div>
+
+            <div class="botoes" id="botoesHeader">
+                <button class="login" onclick="abrirLogin()">Login</button>
+                <button class="cadastro" onclick="abrirCadastro()">Cadastro</button>
+            </div>
+
+            <div class="usuario-logado" id="usuarioLogado" style="display: none;">
+                <span id="nomeUsuarioHeader"></span>
+                <button onclick="fazerLogout()"><i class="bi bi-box-arrow-right"></i></button>
+            </div>
+        </header>
+
+        
+        <nav>
+            <a href="#inicio">Início</a> |
+            <a href="catalogo.html">Catálogo</a> | 
+            <a href="#generos">Gêneros</a> |
+            <a href="#sobre">Sobre</a>
+        </nav>
+
+        <main>
+            <h2 class="titulo-livros">Livros em Destaque</h2>
+            <section class="livros">
+                <div class="card">
+                    <div class="imagem"></div>
+                    <h3>Dom Casmurro</h3>
+                    <p>Machado de Assis</p>
+                </div>
+
+                <div class="card">
+                    <div class="imagem"></div>
+                    <h3>O Cortiço</h3>
+                    <p>Aluísio Azevedo</p>
+                </div>
+
+                <div class="card">
+                    <div class="imagem"></div>
+                    <h3>O Alienista</h3>
+                    <p>Machado de Assis</p>
+                </div>
+
+                <div class="card">
+                    <div class="imagem"></div>
+                    <h3>Memórias Póstumas</h3>
+                    <p>Machado de Assis</p>
+                </div>
+            </section>
+
+            <div id="generos" class="secao-generos" style="display: none;">
+                <h2>Gêneros</h2>
+                <div class="generos-grid">
+                    <div class="genero-card" data-genero="romance">
+                        <h3>Romance</h3>
+                        <p>Histórias de amor e drama</p>
+                    </div>
+                    <div class="genero-card" data-genero="ficcao">
+                        <h3>Ficção</h3>
+                        <p>Mundos imaginários</p>
+                    </div>
+                    <div class="genero-card" data-genero="terror">
+                        <h3>Terror</h3>
+                        <p>Histórias assustadoras</p>
+                    </div>
+                    <div class="genero-card" data-genero="fantasia">
+                        <h3>Fantasia</h3>
+                        <p>Aventuras mágicas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sobre" class="secao-sobre" style="display: none;">
+                <h2>Sobre LiteraPub</h2>
+                <div class="sobre-conteudo">
+                    <h3>Nossa História</h3>
+                    <p>LiteraPub foi criada por estudantes de Tecnologia da Informação como um projeto acadêmico inovador. Nosso objetivo é criar uma plataforma que conecta leitores e escritores, facilitando o acesso a obras literárias e promovendo a criatividade.</p>
+                    
+                    <h3>Nosso Objetivo</h3>
+                    <p>Democratizar o acesso à leitura e permitir que qualquer pessoa possa publicar suas obras, criando uma comunidade vibrante de leitores e autores.</p>
+                    
+                    <h3>Equipe</h3>
+                    <p>Somos estudantes de Tecnologia da Informação apaixonados por literatura e programação, trabalhando para trazer inovação ao mundo dos livros digitais.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2026 LiteraPub — Todos os direitos reservados</p>
+            <div>Contato | Termos | Privacidade</div>
+        </footer>
+
+    </div>
+
+    <div id="modalLogin" class="modal">
+        <div class="conteudo-modal">
+            <span onclick="fecharLogin()">X</span>
+            <div class="login-container">
+                <h2>Entrar</h2>
+                <p>Email</p>
+                <input class="campo" type="email" id="emailLogin" placeholder="usuario123@email.com">
+                <p>Senha</p>
+                <div style="position: relative;">
+                    <input class="campo" type="password" id="senhaLogin" placeholder="Digite sua senha">
+                    <button type="button" onclick="toggleSenha('senhaLogin')" style="background: none; border: none; cursor: pointer; position: absolute; right: 10px; top: 10px; color: #705325;">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+                <br><br>
+                <button class="botao-login" onclick="fazerLogin()">Entrar</button>
+                <p class="mensagem-erro" id="erroLogin"></p>
+                <br><br>
+                <a class="link-cadastro" onclick="trocarParaCadastro()">
+                    Não tem uma conta? Cadastre-se
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalCadastro" class="modal">
+        <div class="conteudo-modal">
+            <span onclick="fecharCadastro()">X</span>
+            <div class="cadastro-box">
+                <h2>Criar Conta</h2>
+                <p>Email</p>
+                <input class="campo" type="email" id="emailCadastro" placeholder="usuario123@email.com">
+
+                <p>Senha</p>
+                <div style="position: relative;">
+                    <input class="campo" type="password" id="senhaCadastro" placeholder="Digite sua senha">
+                    <button type="button" onclick="toggleSenha('senhaCadastro')" style="background: none; border: none; cursor: pointer; position: absolute; right: 10px; top: 10px; color: #705325;">
+                    <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+
+                <p>Confirmar sua senha</p>
+                <div style="position: relative;">
+                    <input class="campo" type="password" id="confirmaSenhaCadastro" placeholder="Confirme sua senha">
+                    <button type="button" onclick="toggleSenha('confirmaSenhaCadastro')" style="background: none; border: none; cursor: pointer; position: absolute; right: 10px; top: 10px; color: #705325;">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+                
+                <p>Você é:</p>
+                <div class="tipo-usuario">
+                    <label><input type="radio" name="tipoUsuario" value="leitor" checked> Leitor</label>
+                    <label><input type="radio" name="tipoUsuario" value="escritor"> Escritor</label>
+                </div>
+                
+                <br><br>
+                <button class="botao-cadastrar" onclick="fazerCadastro()">Cadastrar</button>
+                <p class="senhas-nao-iguais" id="erroCadastro"></p>
+                <br><br>
+                <a class="link-login" onclick="trocarParaLogin()">
+                    Já tem uma conta? Faça login
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/acessibilidade.js"></script>
+    <script src="JS/login.js"></script>
+    <script src="JS/cadastro.js"></script>
+    <script src="JS/index.js"></script>
+</body>
+</html>

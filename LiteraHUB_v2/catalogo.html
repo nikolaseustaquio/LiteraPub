@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Catálogo de Livros</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="CSS/catalogo.css">
+    <link rel="stylesheet" href="CSS/acessibilidade.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="barra-acessibilidade">
+        <button id="btnAumentar" title="Aumentar fonte"><i class="bi bi-zoom-in"></i></button>
+        <button id="btnDiminuir" title="Diminuir fonte"><i class="bi bi-zoom-out"></i></button>
+        <button id="btnLer" title="Ler página"><i class="bi bi-earbuds"></i></button>
+    </div>
+
+    <div class="pagina">
+
+        <aside class="sidebar">
+
+            <div class="logo-sidebar" onclick="voltarInicio()" style="cursor: pointer;">
+                <i class="bi bi-book"></i>
+                <h1 class="logo-nome">LiteraPub</h1>
+                <p class="logo-frase">Busque seus melhores livros aqui!</p>
+            </div>
+
+            <div class="menu-box">
+                <a href="favoritos.html" class="botao-favoritos">
+                    <i class="bi bi-heart-fill"></i> Meus Favoritos
+                </a>
+                <a href="escritor.html" class="botao-autor" id="botaoAutor" style="display: none;">
+                    <i class="bi bi-pencil-square"></i> Painel do Autor
+                </a>
+                <a href="admin.html" class="botao-admin" id="botaoAdmin" style="display: none;">
+                    <i class="bi bi-shield-lock"></i> Painel Admin
+                </a>
+            </div>
+
+            <div class="filtro-box">
+                <h3><i class="bi bi-funnel-fill"></i> Filtros</h3>
+
+                <p class="filtro-titulo">Gênero</p>
+
+                <label class="genero">
+                    <input type="checkbox" class="checkbox-genero" value="romance">
+                    <span class="caixa"></span>
+                    Romance
+                </label>
+
+                <label class="genero">
+                    <input type="checkbox" class="checkbox-genero" value="ficcao">
+                    <span class="caixa"></span>
+                    Ficção
+                </label>
+
+                <label class="genero">
+                    <input type="checkbox" class="checkbox-genero" value="terror">
+                    <span class="caixa"></span>
+                    Terror
+                </label>
+
+                <label class="genero">
+                    <input type="checkbox" class="checkbox-genero" value="fantasia">
+                    <span class="caixa"></span>
+                    Fantasia
+                </label>
+
+                <label class="genero">
+                    <input type="checkbox" class="checkbox-genero" value="outros">
+                    <span class="caixa"></span>
+                    Outros
+                </label>
+            </div>
+
+            <div class="filtro-box">
+                <h3><i class="bi bi-sort-down"></i> Ordenar por</h3>
+                <select class="select-ordenar">
+                    <option value="recentes">Mais recentes</option>
+                    <option value="avaliados">Mais avaliados</option>
+                    <option value="az">A - Z</option>
+                    <option value="za">Z - A</option>
+                </select>
+            </div>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <div class="busca-box">
+                <i class="bi bi-search"></i>
+                <input class="busca-input" type="text" placeholder="Buscar no catálogo...">
+            </div>
+
+            <div class="grade-livros">
+
+                <div class="card-livro" data-id="1" data-titulo="Dom Casmurro" data-autor="Machado de Assis" data-genero="romance">
+                    <div class="capa-livro">
+                        <i class="bi bi-image"></i>
+                    </div>
+                    <p class="titulo-livro">Dom Casmurro</p>
+                    <p class="autor-livro">Machado de Assis</p>
+                    <div class="acoes-card">
+                        <button class="botao-ver-mais">Ver mais</button>
+                        <button class="botao-favorito" title="Adicionar aos favoritos">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-livro" data-id="2" data-titulo="O Cortiço" data-autor="Aluísio Azevedo" data-genero="ficcao">
+                    <div class="capa-livro">
+                        <i class="bi bi-image"></i>
+                    </div>
+                    <p class="titulo-livro">O Cortiço</p>
+                    <p class="autor-livro">Aluísio Azevedo</p>
+                    <div class="acoes-card">
+                        <button class="botao-ver-mais">Ver mais</button>
+                        <button class="botao-favorito" title="Adicionar aos favoritos">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-livro" data-id="3" data-titulo="O Alienista" data-autor="Machado de Assis" data-genero="ficcao">
+                    <div class="capa-livro">
+                        <i class="bi bi-image"></i>
+                    </div>
+                    <p class="titulo-livro">O Alienista</p>
+                    <p class="autor-livro">Machado de Assis</p>
+                    <div class="acoes-card">
+                        <button class="botao-ver-mais">Ver mais</button>
+                        <button class="botao-favorito" title="Adicionar aos favoritos">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="JS/acessibilidade.js"></script>
+    <script src="JS/favoritos.js"></script>
+    <script src="JS/catalogo.js"></script>
+    <script>
+        function voltarInicio() {
+            window.location.href = 'index.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const usuario = localStorage.getItem('usuario');
+            const botaoAutor = document.getElementById('botaoAutor');
+            const botaoAdmin = document.getElementById('botaoAdmin');
+
+            if (usuario) {
+                try {
+                    const usuarioObj = JSON.parse(usuario);
+                    if (botaoAutor) botaoAutor.style.display = 'flex';
+
+                    if (usuarioObj.email === 'admin@literahub.com') {
+                        if (botaoAdmin) botaoAdmin.style.display = 'flex';
+                    }
+                } catch (e) {}
+            }
+        });
+    </script>
+</body>
+</html>
